@@ -6,8 +6,6 @@
 // и возвращает true или false
 // в зависимости от того, правильно ли расставлены скобки в строке.
 
-var i;
-
 function enterMyString() {
     var innStr;
     do {
@@ -15,12 +13,8 @@ function enterMyString() {
         do {
             innStr = prompt('Введите текст со скобками');
         } while (innStr == null || !!innStr === false);
-
-        // alert(innStr.length);
-
-        // а есть ли скобка?
         var symbol = 0;
-        for (i = 0; (i <= innStr.length && !symbol); i++) {
+        for (var i = 0; (i <= innStr.length && !symbol); i++) {
             if (innStr[i] === '(' || innStr[i] === ')') {
                 symbol++;
             }
@@ -31,86 +25,46 @@ function enterMyString() {
 
 function correctBrackets(enterStr) {
     var innStr = enterStr;
-    var innSum = 0;
-    var brackets = '';
+    var leftBracket = 0;
+    var rightBracket = 0;
+    var resMid = true;
     var res;
 
-    // составить строку из одних скобок
-    for (i = 0; i <= innStr.length - 1; i++) {
-        if (innStr[i] === '(' || innStr[i] === ')') {
-             brackets = brackets + innStr[i];
+    for (var i = 0; i < innStr.length; i++) {
+
+        if (innStr[i] === '(') {
+            leftBracket ++;
+        } else if (innStr[i] === ')') {
+            rightBracket ++;
         }
 
-    }
-
-    if (brackets[0] === ')') { // проверить первую скобку
-        res = false;
-        // alert('первая скобка не правильная');
-    } else if (brackets[brackets.length - 1] === '(') { // проверить последнюю скобку
-        res = false;
-        // alert('последняя скобка не правильная');
-    } else {        // подсчет парности скобок
-        for (i = 0; i <= brackets.length - 1; i++) {
-            switch (brackets[i]) {
-                case '(':
-                    innSum += 1;
-                    break;
-                case ')':
-                    innSum += -1;
-                    break;
-            }
+        if (leftBracket < rightBracket) {
+            resMid = false;
+            break;
         }
-
-        (!innSum) ? res = true : res = false;
     }
-        // вывод окончательного результата.
-    if (res) {
+
+    leftBracket === rightBracket && resMid ? res = true : res = false;
+
+    return res;
+}
+
+function interpretResult(enterRes) {
+    var innRes = enterRes;
+    if (innRes) {
         alert('Скобки расставлены правильно.')
     } else {
         alert('Скобки расставлены НЕ правильно.');
     }
 }
 
-correctBrackets(enterMyString());
+interpretResult(correctBrackets(enterMyString()));
 
+// ((()))           - true
+// ()()()           - true
+// a*(a)+(a)*(a)/a  - true
 
-
-// var myString = enterMyString();
-//
-// correctBrackets(myString);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+// ())(()           - false
+// a*(a))*((a)/a    - false
+// )(()()           - false
+// ()())(           - false
