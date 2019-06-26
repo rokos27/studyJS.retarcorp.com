@@ -1,13 +1,12 @@
-{// !2 -
+// !2 -
 // Ввести две строки
 // и проверить, являются ли они анаграммами друг друга
 // (составлены из того же набора символов).
-
 // (Совет – разбить обе строки на массив,
 // отсортировать оба массива,
 // склеить массивы в строки
 // и сравнить получившиеся строки)
-}
+
 
 var firstString = 'qwer    tyuiop? - asdf. ghjkl, + zxcvbnm!';
 var secondString = 'zxcvbnm qwertyuiop asdfghjkl';
@@ -15,9 +14,9 @@ var secondString = 'zxcvbnm qwertyuiop asdfghjkl';
 var firstAnagram = toSortString(firstString);
 var secondAnagram = toSortString(secondString);
 
-alert(firstAnagram + ', ' + secondAnagram);
+var res  = comparisonOfStrings(firstAnagram, secondAnagram);
 
-comparisonOfStrings(firstAnagram, secondAnagram);
+alert(res);
 
 function toSortString(enterString) {
     var word = enterString.toLowerCase();
@@ -41,12 +40,8 @@ function toSortString(enterString) {
 }
 
 function comparisonOfStrings(enterFirstStr, enterSecondStr) {
-    var innFirstStr = enterFirstStr;
-    var innSecondStr = enterSecondStr;
-    if (innFirstStr === innSecondStr) {
+    if (enterFirstStr === enterSecondStr) {
         return 'Строки являются анаграммами';
-    } else {
-        return 'Строки НЕ являются анаграммами';
     }
-
+    return 'Строки НЕ являются анаграммами';
 }
