@@ -23,12 +23,9 @@ function enterMyString() {
     return innStr;
 }
 
-function correctBrackets(enterStr) {
-    var innStr = enterStr;
+function correctBrackets(innStr) {
     var leftBracket = 0;
     var rightBracket = 0;
-    var resMid = true;
-    var res;
 
     for (var i = 0; i < innStr.length; i++) {
 
@@ -39,18 +36,14 @@ function correctBrackets(enterStr) {
         }
 
         if (leftBracket < rightBracket) {
-            resMid = false;
-            break;
+            return false;
         }
     }
 
-    leftBracket === rightBracket && resMid ? res = true : res = false;
-
-    return res;
+    return leftBracket === rightBracket;
 }
 
-function interpretResult(enterRes) {
-    var innRes = enterRes;
+function interpretResult(innRes) {
     if (innRes) {
         alert('Скобки расставлены правильно.')
     } else {
@@ -58,7 +51,9 @@ function interpretResult(enterRes) {
     }
 }
 
-interpretResult(correctBrackets(enterMyString()));
+var myString = enterMyString();
+var correct = correctBrackets(myString);
+interpretResult(correct);
 
 // ((()))           - true
 // ()()()           - true

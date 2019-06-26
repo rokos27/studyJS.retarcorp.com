@@ -17,7 +17,7 @@ var secondAnagram = toSortString(secondString);
 
 alert(firstAnagram + ', ' + secondAnagram);
 
-comparisonOfStrings(firstAnagram, secondAnagram);
+alert(comparisonOfStrings(firstAnagram, secondAnagram));
 
 function toSortString(enterString) {
     var word = enterString.toLowerCase();
