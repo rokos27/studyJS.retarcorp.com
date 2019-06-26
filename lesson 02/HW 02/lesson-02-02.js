@@ -7,7 +7,6 @@
 // склеить массивы в строки
 // и сравнить получившиеся строки)
 
-
 var firstString = 'qwer    tyuiop? - asdf. ghjkl, + zxcvbnm!';
 var secondString = 'zxcvbnm qwertyuiop asdfghjkl';
 
