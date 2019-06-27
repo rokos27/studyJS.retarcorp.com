@@ -13,8 +13,13 @@ var secondString = 'zxcvbnm qwertyuiop asdfghjkl';
 var firstAnagram = toSortString(firstString);
 var secondAnagram = toSortString(secondString);
 
-var res  = comparisonOfStrings(firstAnagram, secondAnagram);
+var res;
 
+if (firstAnagram === secondAnagram) {
+    res = 'Строки являются анаграммами';
+} else {
+    res = 'Строки НЕ являются анаграммами';
+}
 alert(res);
 
 function toSortString(enterString) {
@@ -22,25 +27,7 @@ function toSortString(enterString) {
     word = word.split(/[\s,.?\-!+]+/);
     word = word.join('');
     word = word.split('');
-    var q;
-
-    for (var i = 0; i < word.length; i++) {
-        for (var j = 0 ;  (word.length - 1 - j) > i; j++) {
-
-            if (word[j].charCodeAt(0) >= word[j + 1].charCodeAt(0)) {
-                q = word[j];
-                word[j] = word[j+1];
-                word[j+1] = q;
-            }
-        }
-    }
+    word = word.sort();
     word = word.join('');
     return word;
-}
-
-function comparisonOfStrings(enterFirstStr, enterSecondStr) {
-    if (enterFirstStr === enterSecondStr) {
-        return 'Строки являются анаграммами';
-    }
-    return 'Строки НЕ являются анаграммами';
 }
