@@ -33,17 +33,16 @@ var namesArr = [
 var minAge = 3;     // уже умеем говорить
 var maxAge = 90;    // еще можем говорить
 var n = 10;        // кол-во объектов типа человек
-var sayNameAge = function (name, age) {
+var sayNameAge = function () {
     console.log(
-        'My name is ' + name
-        + '. I am ' + age + '.'
+        'My name is ' + this.name
+        + '. I am ' + this.age + '.'
     );
 };
-var sayAgeName = function (name, age) {
+var sayAgeName = function () {
     console.log(
-        'I am ' + age + '. My name is ' + name + '.'
+        'I am ' + this.age + '. My name is ' + this.name + '.'
     );
-
 };
 
 var people = [];
@@ -53,12 +52,7 @@ for (var i = 0; i < n; i++) {
         people[x] = {
             name: namesArr[Math.floor(namesArr.length * Math.random())]
             ,age: Math.floor(minAge + (maxAge - minAge) * Math.random())
-            ,myFunc: function() {
-                console.log(
-                    'My name is ' + this.name
-                    + '. I am ' + this.age + '.'
-                );
-            }
+            ,myFunc: (Math.floor(Math.random() * 2) === 0) ? sayNameAge : sayAgeName
         };
     })(i);
 }
