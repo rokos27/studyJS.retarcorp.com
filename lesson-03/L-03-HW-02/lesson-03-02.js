@@ -52,7 +52,8 @@ for (var i = 0; i < n; i++) {
     people.push({
         name: namesArr[Math.floor(namesArr.length * Math.random())],
         age: Math.floor(minAge + (maxAge - minAge) * Math.random()),
-        myFunc: (Math.floor(Math.random() * 2) === 0) ? sayNameAge : sayAgeName
+        myFunc: Math.random() < 0.5 ? sayNameAge : sayAgeName
+        // myFunc: (Math.floor(Math.random() * 2) === 0) ? sayNameAge : sayAgeName
     });
 }
 
@@ -69,7 +70,8 @@ var people2 = new Array(n)
         return {
             name: namesArr[Math.floor(namesArr.length * Math.random())],
             age: Math.floor(minAge + (maxAge - minAge) * Math.random()),
-            myFunc: (Math.floor(Math.random() * 2) === 0) ? sayNameAge : sayAgeName
+            myFunc: Math.random() < 0.5 ? sayNameAge : sayAgeName
+            // myFunc: (Math.floor(Math.random() * 2) === 0) ? sayNameAge : sayAgeName
         };
     });
 
