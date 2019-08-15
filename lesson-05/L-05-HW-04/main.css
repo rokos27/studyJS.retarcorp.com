@@ -1,0 +1,11 @@
+table {
+    text-align: center;
+}
+
+.dark {
+    background-color: grey;
+}
+
+.text-color {
+    color: orangered;
+}

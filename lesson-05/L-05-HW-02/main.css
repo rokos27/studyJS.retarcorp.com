@@ -1,0 +1,17 @@
+table {
+    text-align: center;
+}
+
+caption {
+    color: blue;
+}
+
+tr:first-child,
+td:first-child {
+    color: red;
+    font-weight: bold;
+}
+
+tr:first-child td:first-child {
+    background-color: grey;
+}
